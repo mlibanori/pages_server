@@ -1,0 +1,19 @@
+{
+  "name": "pages-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "express": "^4.13.4",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.83.0",
+    "sequelize": "^4.8.4",
+    "sequelize-datatables": "^1.2.1",
+    "serve-favicon": "~2.4.2"
+  }
+}

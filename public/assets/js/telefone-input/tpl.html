@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+        <label><a class="tipoTelefone" data-placement="right" data-type="select" data-title="Selecione o tipo de telefone"></a> </label>
+      <div class="input-group">
+        <!--<input type="text" class="form-control" ng-model="vm.telefone" ui-br-phone-number>-->
+        <input ng-model="ngModel.numero" required type="text" ui-br-phone-number class="form-control">
+        <span ng-click="remove(index)" ng-class="{hide: !minus}" class="input-group-addon success" >
+          <i class="fa fa-minus"></i>
+        </span>
+        <span ng-click="add()" ng-class="{hide: !plus}" class="input-group-addon primary ">
+          <i class="fa fa-plus"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-8">
+        <!-- START PANEL -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Formulário
+                    <!--{{vm.pessoa}}-->
+                </div>
+            </div>
+            <div class="panel-body">
+                <h5>
+					Dados da Propriedade
+				</h5>
+                <form editable-form class="" role="form" name="formPropriedade">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group" ng-class="{ 'has-error' : formPropriedade.nome.$invalid && formPropriedade.nome.$touched }">
+                                <label>Nome*</label>
+                                <input type="text" name="nome" required ng-model="vm.propriedade.nome" class="form-control">
+                                <label  class="error" ng-show="formPropriedade.nome.$error.required && formPropriedade.nome.$touched">Este campo é requerido!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group" ng-class="{'has-error': formCliente.ccir.$invalid}">
+                                <label>CCIR</label>
+                                <input type="text" name="ccir" ng-model="vm.propriedade.ccir" maxlength="32" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group" ng-class="{'has-error': formCliente.sncr.$invalid}">
+                                <label>SNCR/INCRA</label>
+                                <input type="text" name="sncr" ng-model="vm.propriedade.sncr" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group" ng-class="{'has-error': formCliente.nirf.$invalid}">
+                                <label>NIRF</label>
+                                <input type="text" name="nirf" ng-model="vm.propriedade.nirf" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Proprietários</label>
+                                <ui-select multiple ng-model="vm.propriedade.proprietarios" theme="bootstrap">
+                                    <ui-select-match placeholder="">{{$item.nome}}</ui-select-match>
+                                    <ui-select-choices repeat="sexo in vm.select.proprietarios | filter: $select.search">
+                                        <div ng-bind-html="sexo.nome | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Mais Informações</label>
+                                <textarea name="maisInformacoes" ng-model="vm.propriedade.maisInformacoes" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class=" bg-white" style="margin-top:20px;">
+                    <button ng-disabled="!formPropriedade.$valid" ng-click=" vm.salvar($event)" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Aguarde!" class="btn btn-primary btn-cons pull-left" type="button">Salvar</button>
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+</div>

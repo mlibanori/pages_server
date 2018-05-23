@@ -1,0 +1,165 @@
+<div class="row">
+    <div class="col-md-12">
+        <!-- START PANEL -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Formulário de cadastro
+                    <!--{{vm.pessoa}}-->
+                </div>
+            </div>
+            <div class="panel-body">
+                <h5>
+                    Cadastro de Veículos
+                </h5>
+                <form  editable-form class="" role="form" name="formCliente">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Placa do Veículo*</label>
+                                <input type="text" name="placa" ng-model="vm.placa" ui-br-car-plate-mask class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                                <label>Renavam</label>
+                                <input type="text" name="renavam" ng-model="vm.renavam" maxlength="11"  class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                                <label>Nº CHASSI</label>
+                                <input type="text" name="renavam" ng-model="vm.renavam"  class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Proprietário</label>
+                                <ui-select  ng-model="vm.pessoa.pessoa_fisica.sexo" theme="bootstrap">
+                                    <ui-select-match placeholder="Selecione ou digite o nome do proprietário">{{$select.selected}}</ui-select-match>
+                                    <ui-select-choices repeat="sexo in vm.select.sexo | filter: $select.search">
+                                        <div ng-bind-html="sexo | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Tipo de veículo</label>
+                                <ui-select  ng-model="vm.pessoa.pessoa_fisica.sexo" theme="bootstrap">
+                                    <ui-select-match placeholder="Selecione o tipo de Veículo">{{$select.selected}}</ui-select-match>
+                                    <ui-select-choices repeat="sexo in vm.select.sexo | filter: $select.search">
+                                        <div ng-bind-html="sexo | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Marca</label>
+                                <ui-select  ng-model="vm.marca" theme="bootstrap">
+                                    <ui-select-match placeholder="Selecione ou digite a marca do Veículo">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="teste in vm.marcas | filter: $select.search">
+                                        <div ng-bind-html="teste.name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label>Modelo</label>
+                                <ui-select  ng-model="vm.pessoa.pessoa_fisica.sexo" theme="bootstrap">
+                                    <ui-select-match placeholder="Selecione ou digite o modelo do veículo">{{$select.selected}}</ui-select-match>
+                                    <ui-select-choices repeat="sexo in vm.select.sexo | filter: $select.search">
+                                        <div ng-bind-html="sexo | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                                <label>Ano de Fabricação</label>
+                                <input type="text" name="renavam" ng-model="vm.renavam"  class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                                <label>Ano do modelo</label>
+                                <input type="text" name="renavam" ng-model="vm.renavam"  class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                                <label>Cor Predominante</label>
+                                <input type="text" name="renavam" ng-model="vm.renavam"  class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Combustivel</label>
+                                <ui-select multiple  ng-model="vm.pessoa.pessoa_fisica.sexo" theme="bootstrap">
+                                    <ui-select-match placeholder="Selecione o tipo de combustivel">{{$select.selected}}</ui-select-match>
+                                    <ui-select-choices repeat="sexo in vm.select.sexo | filter: $select.search">
+                                        <div ng-bind-html="sexo | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label>Mais Informações</label>
+                                <textarea name="maisInformacoes" ng-model="vm.pessoa.maisInformacoes" rows="5" class="form-control" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class=" bg-white" style="margin-top:20px;">
+                    <button ng-disabled="!formCliente.$valid" ng-click=" vm.alert()" class="btn btn-primary btn-cons pull-left" type="button">
+                        <span>Salvar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+
+</div>

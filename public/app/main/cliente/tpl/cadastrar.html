@@ -1,0 +1,184 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- START PANEL -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Formulário de cadastro
+          <!--{{vm.pessoa}}-->
+        </div>
+      </div>
+      <div class="panel-body">
+        <h5>
+          Cadastro de Clientes
+        </h5>
+        <form  editable-form class="" role="form" name="formCliente">
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Tipo de Pessoa</label>
+                <ui-select ng-model="vm.pessoa.tipo_pessoa" theme="bootstrap">
+                  <ui-select-match placeholder="Selecione o tipo de Pessoa">{{$select.selected.descricao}}</ui-select-match>
+                  <ui-select-choices repeat="tPessoa in vm.select.tPessoa | filter: $select.search" value="{{$select.selected.id}}">
+                    <div ng-bind-html="tPessoa.descricao | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="form-group">
+                <label>Nome Completo*</label>
+                <input type="text" name="nome" ng-model="vm.pessoa.nome" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group" ng-class="{'has-error': formCliente.cpf.$invalid}">
+                <label>CPF</label>
+                <input type="text" name="cpf" ng-model="vm.pessoa.pessoa_fisica.cpf" ui-br-cpf-mask class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>RG</label>
+                <input type="text" name="nome" ng-model="vm.pessoa.pessoa_fisica.rg" class="form-control" >
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Data de Nascimento</label>
+                <input ui-date-mask="DD/MM/YYYY" name="data_nascimento" ng-model="vm.pessoa.pessoa_fisica.data_nascimento" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Sexo</label>
+                <ui-select  ng-model="vm.pessoa.pessoa_fisica.sexo" theme="bootstrap">
+                  <ui-select-match placeholder="Selecione o Sexo">{{$select.selected}}</ui-select-match>
+                  <ui-select-choices repeat="sexo in vm.select.sexo | filter: $select.search">
+                    <div ng-bind-html="sexo | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Estado Civil</label>
+                <ui-select ng-model="vm.pessoa.pessoa_fisica.estado_civil"theme="bootstrap">
+                  <ui-select-match placeholder="Selecione o Estado Civil">{{$select.selected.descricao}}</ui-select-match>
+                  <ui-select-choices repeat="eCivil in vm.select.estados_civis | filter: $select.search">
+                    <div ng-bind-html="eCivil.descricao | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label>Nacionalidade</label>
+                <input type="text" name="nome" ng-model="vm.pessoa.pessoa_fisica.nacionalidade" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" name="nome" ng-model="vm.pessoa.pessoa_fisica.email" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label>Endereço</label>
+                <input type="text" name="nome" ng-model="vm.pessoa.endereco" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Numero</label>
+                <input type="text" name="numero" ng-model="vm.pessoa.numero" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label>Bairro</label>
+                <input type="text" name="bairro" ng-model="vm.pessoa.bairro" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>CEP</label>
+                <input type="text" name="cep" ng-model="vm.pessoa.cep" ui-br-cep-mask class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <label>Complemento</label>
+                <input type="text" name="complemento" ng-model="vm.pessoa.complemento" class="form-control" >
+              </div>
+            </div>
+          </div>
+
+          <telefone-input tipo="vm.getTipoTelefone" ng-model="vm.pessoa.telefones"></telefone-input>
+
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label>Mais Informações</label>
+                <textarea name="maisInformacoes" ng-model="vm.pessoa.maisInformacoes" rows="5" class="form-control" ></textarea>
+              </div>
+            </div>
+          </div>
+      </form>
+
+
+<div class=" bg-white" style="margin-top:20px;">
+    <button ng-disabled="!formCliente.$valid" ng-click=" vm.alert()" class="btn btn-primary btn-cons pull-left" type="button">
+    <span>Salvar</span>
+  </button>
+</div>
+</div>
+</div>
+<!-- END PANEL -->
+</div>
+
+</div>

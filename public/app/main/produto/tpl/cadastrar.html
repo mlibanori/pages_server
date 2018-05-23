@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- START PANEL -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h5>
+        Produtos
+      </h5>
+    </div>
+      <div class="panel-body">
+
+        <form  editable-form class="" role="form" name="formProduto">
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Nome do Produto*</label>
+                <input type="text" name="nome" ng-model="vm.produto.nome" ng-required="true" class="form-control" >
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Categoria do Produto</label>
+                <ui-select  ng-model="vm.produto.categoria" theme="bootstrap">
+                  <ui-select-match placeholder="Selecione um categoria">{{$select.selected}}</ui-select-match>
+                  <ui-select-choices repeat="categoria in vm.select.sexo | filter: $select.search">
+                    <div ng-bind-html="categoria | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Código do Produto</label>
+                <input type="text" name="nome" ng-model="vm.produto.codigo" class="form-control" >
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Valor de Venda</label>
+                <input type="text" name="nome" ng-model="vm.produto.valor_venda" ui-money-mask class="form-control" >
+              </div>
+            </div>
+
+          </div>
+      </form>
+
+
+<div class=" bg-white" style="margin-top:20px;">
+    <button ng-disabled="!formProduto.$valid" ng-click=" vm.alert()" class="btn btn-primary btn-cons pull-left" type="button">
+    <span>Salvar</span>
+  </button>
+</div>
+</div>
+</div>
+<!-- END PANEL -->
+</div>
+
+</div>

@@ -1,0 +1,638 @@
+<div><span style="font-family: Courier New; font-size: 10pt;">
+<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Criando&nbsp;o&nbsp;banco&nbsp;de&nbsp;dados&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">DATABASE</span>&nbsp;<span style="color: maroon; ">vendas</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: blue; ">USE</span>&nbsp;<span style="color: maroon; ">vendas</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Pessoas&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">IDENTITY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">50</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_cpf</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">12</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">UNIQUE</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_status</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_status</span>&nbsp;<span style="color: blue; ">IN</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">1</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">3</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">4</span><span style="color: maroon; ">)</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Clientes&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_renda</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_credito</span>&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Estagiarios&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">estagiarios</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">est_bolsa</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">est_bolsa</span>&nbsp;<span style="color: silver; ">&gt;=</span>&nbsp;<span style="color: black; ">0</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Funcionarios&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">fun_salario</span>&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">fun_salario</span>&nbsp;<span style="color: silver; ">&gt;</span>&nbsp;<span style="color: black; ">0</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">sup_codigo</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">sup_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">funcionarios</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Pedidos&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">IDENTITY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_data</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DATETIME</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_valor</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_valor</span>&nbsp;<span style="color: silver; ">&gt;</span>&nbsp;<span style="color: black; ">0</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_status</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_status</span>&nbsp;<span style="color: blue; ">IN</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">1</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">3</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">4</span><span style="color: maroon; ">)</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">fun_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">est_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">fun_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">funcionarios</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">cli_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">clientes</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">est_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">estagiarios</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Produtos&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span>&nbsp;<span style="color: blue; ">IDENTITY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_descricao</span>&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">50</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_qtd</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_valor</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_status</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_status</span>&nbsp;<span style="color: blue; ">IN</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">1</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">3</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">4</span><span style="color: maroon; ">)</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Itens_Pedidos&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">itens_pedidos</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_qtd</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_valor</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: silver; ">,</span>&nbsp;<span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">pedidos</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">produtos</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Fim&nbsp;Script&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-&nbsp;</span>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Lápis'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">100</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">0.8</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Apontador'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">100</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2.5</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Caneta'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">100</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1.2</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Caderno'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">100</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">4.5</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Borracha'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">100</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">0.85</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: silver; ">*</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Inserts&nbsp;Pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Batman'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'3030'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'SuperMain'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'1515'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'SpiderMan'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'3131'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Super&nbsp;Foca'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'2020'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Buslaboo'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'007'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'BuschaGalack'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'4343'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Super&nbsp;Prof'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'3636'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'Ensina&nbsp;Legal'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red; ">'3333'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: silver; ">*</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Inserts&nbsp;Clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">10000</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">3000</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">2</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">15000</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">5000</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: silver; ">*</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Inserts&nbsp;Estagiários</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">estagiarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">3</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">725</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">estagiarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">5</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">500</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: silver; ">*</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">estagiarios</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Inserts&nbsp;funcionarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">4</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2500</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">6</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1000</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">4</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2500</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">8</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1050</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">7</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: silver; ">*</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">funcionarios</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Insert&nbsp;Pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'19-08-2009&nbsp;10:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">6</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">3</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'19-08-2009&nbsp;12:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">8</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">5</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'19-08-2009&nbsp;14:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">6</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">5</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'20-08-2009&nbsp;10:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">8</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">3</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'20-08-2009&nbsp;12:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">6</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">5</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: red; ">'20-08-2009&nbsp;14:00'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">8</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">3</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">COMMIT</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/><span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>
+<br/><span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ROLLBACK</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/><span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Exercicios&nbsp;de&nbsp;VIEWS&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: green; font-style: italic; ">/*5.&nbsp;Visualizar&nbsp;todos&nbsp;os&nbsp;pedidos,&nbsp;exibindo:&nbsp;número,&nbsp;data,&nbsp;total,
+
+<br/>nome&nbsp;do&nbsp;cliente,&nbsp;nome&nbsp;do&nbsp;funcionário,&nbsp;nome&nbsp;do&nbsp;estágio&nbsp;e
+
+<br/>estagiário.*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">VIEW</span>&nbsp;<span style="color: maroon; ">vw_pedidos</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: maroon; ">Numero</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_data</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Data</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_valor</span>&nbsp;&nbsp;<span style="color: maroon; ">Total</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">c</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Cliente</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Funcionario</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">e</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Estagiario</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pedidos</span>&nbsp;<span style="color: maroon; ">p</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INNER</span>&nbsp;<span style="color: blue; ">JOIN</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">c</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ON</span>&nbsp;<span style="color: maroon; ">c</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">cli_codigo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INNER</span>&nbsp;<span style="color: blue; ">JOIN</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">e</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ON</span>&nbsp;<span style="color: maroon; ">e</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">est_codigo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INNER</span>&nbsp;<span style="color: blue; ">JOIN</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">f</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ON</span>&nbsp;<span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">fun_codigo</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*10.&nbsp;Visualize&nbsp;a&nbsp;quantidade&nbsp;de&nbsp;funcionários&nbsp;subordinados&nbsp;de
+
+<br/>cada&nbsp;supervisor,&nbsp;exibindo:&nbsp;código&nbsp;do&nbsp;supervisor,&nbsp;nome&nbsp;do
+
+<br/>supervisor&nbsp;e&nbsp;a&nbsp;quantidade&nbsp;de&nbsp;subordinados.*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">VIEW</span>&nbsp;<span style="color: maroon; ">qtd_subordinados</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">s</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">s</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Nome</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: fuchsia; font-style: italic; ">Count</span><span style="color: maroon; ">(</span><span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: maroon; ">QTD</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">funcionarios</span>&nbsp;<span style="color: maroon; ">f</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INNER</span>&nbsp;<span style="color: blue; ">JOIN</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">s</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ON</span>&nbsp;<span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">sup_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">s</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">GROUP</span>&nbsp;&nbsp;<span style="color: blue; ">BY</span>&nbsp;<span style="color: maroon; ">s</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">s</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-Funções&nbsp;Escalares&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-</span>
+<br/><span style="color: green; font-style: italic; ">/*5.&nbsp;Faça&nbsp;uma&nbsp;função&nbsp;para&nbsp;calcular&nbsp;a&nbsp;quantidade&nbsp;de&nbsp;pedidos
+
+<br/>registrados&nbsp;por&nbsp;um&nbsp;funcionário,&nbsp;recebendo&nbsp;como&nbsp;entrada&nbsp;o
+
+<br/>código&nbsp;do&nbsp;funcionário&nbsp;e&nbsp;retornando&nbsp;a&nbsp;quantidade&nbsp;de
+
+<br/>pedidos&nbsp;registrados.*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">FUNCTION</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Contar_pedidos_funcionario</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@fun_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: maroon; ">returns</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: fuchsia; font-style: italic; ">Count</span><span style="color: maroon; ">(</span><span style="color: maroon; ">pedidos</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">pedidos</span><span style="color: silver; ">.</span><span style="color: maroon; ">fun_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@fun_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*10.&nbsp;Faça&nbsp;uma&nbsp;função&nbsp;calcular&nbsp;o&nbsp;total&nbsp;faturado&nbsp;de&nbsp;um&nbsp;produto,
+
+<br/>recebendo&nbsp;como&nbsp;entrada&nbsp;o&nbsp;código&nbsp;do&nbsp;produto&nbsp;e&nbsp;retornando
+
+<br/>o&nbsp;total&nbsp;calculado.*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">FUNCTION</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Totalizar_faturamento_prod</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@prd_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: maroon; ">returns</span>&nbsp;<span style="color: black; font-style: italic; ">MONEY</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: fuchsia; font-style: italic; ">Sum</span><span style="color: maroon; ">(</span><span style="color: maroon; ">itp_qtd</span>&nbsp;<span style="color: silver; ">*</span>&nbsp;<span style="color: maroon; ">itp_valor</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itens_pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@prd_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*15.&nbsp;Faça&nbsp;uma&nbsp;função&nbsp;para&nbsp;calcular&nbsp;a&nbsp;quantidade&nbsp;de&nbsp;produtos
+
+<br/>com&nbsp;preço&nbsp;inferior&nbsp;a&nbsp;um&nbsp;preço&nbsp;informado,&nbsp;recebendo&nbsp;como
+
+<br/>entrada&nbsp;o&nbsp;preço&nbsp;informado&nbsp;e&nbsp;retornando&nbsp;a&nbsp;quantidade&nbsp;de
+
+<br/>produtos.*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">FUNCTION</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Qtd_prod_valor</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@valor</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: maroon; ">returns</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: fuchsia; font-style: italic; ">Count</span><span style="color: maroon; ">(</span><span style="color: silver; ">*</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">produtos</span><span style="color: silver; ">.</span><span style="color: maroon; ">prd_valor</span>&nbsp;<span style="color: silver; ">&lt;</span>&nbsp;<span style="color: #8000FF; ">@valor</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&#45;&#45;&#45;&#45;-Exercícios:&nbsp;funções&nbsp;do&nbsp;tipo&nbsp;table&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-</span>
+<br/><span style="color: green; font-style: italic; ">/*5.&nbsp;Faça&nbsp;uma&nbsp;função&nbsp;para&nbsp;buscar&nbsp;os&nbsp;funcionários&nbsp;um&nbsp;com
+
+<br/>determinado&nbsp;status.&nbsp;Deve-se&nbsp;receber&nbsp;como&nbsp;entrada&nbsp;o&nbsp;status
+
+<br/>e&nbsp;retornar:&nbsp;código&nbsp;do&nbsp;funcionário,&nbsp;nome&nbsp;e&nbsp;salário*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">FUNCTION</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Buscar_funcionario_status</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@Status</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: maroon; ">returns</span>&nbsp;<span style="color: blue; ">TABLE</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: maroon; ">Codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_nome</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">Nome</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">fun_salario</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">funcionarios</span>&nbsp;<span style="color: maroon; ">f</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INNER</span>&nbsp;<span style="color: blue; ">JOIN</span>&nbsp;<span style="color: maroon; ">pessoas</span>&nbsp;<span style="color: maroon; ">p</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ON</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">f</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_status</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@Status</span><span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*10.&nbsp;Faça&nbsp;uma&nbsp;função&nbsp;para&nbsp;buscar&nbsp;os&nbsp;pedidos&nbsp;de&nbsp;um&nbsp;período.
+
+<br/>Deve-se&nbsp;receber&nbsp;data&nbsp;inicial&nbsp;e&nbsp;final&nbsp;e,&nbsp;retornar:&nbsp;número&nbsp;do
+
+<br/>pedido,&nbsp;data,&nbsp;valor&nbsp;(ped_valor)&nbsp;e&nbsp;status.&nbsp;Dica:&nbsp;use&nbsp;between*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">FUNCTION</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Buscar_pedidos</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@dataInicial</span>&nbsp;<span style="color: black; font-style: italic; ">DATE</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@dataFinal</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DATE</span><span style="color: maroon; ">)</span>
+<br/><span style="color: maroon; ">returns</span>&nbsp;<span style="color: blue; ">TABLE</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: red; ">'Nº&nbsp;Pedido'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_data</span>&nbsp;&nbsp;&nbsp;<span style="color: red; ">'Data'</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_valor</span>&nbsp;&nbsp;<span style="color: maroon; ">Valor</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_status</span>&nbsp;<span style="color: red; ">'Status'</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pedidos</span>&nbsp;<span style="color: maroon; ">p</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">p</span><span style="color: silver; ">.</span><span style="color: maroon; ">ped_data</span>&nbsp;<span style="color: blue; ">BETWEEN</span>&nbsp;<span style="color: #8000FF; ">@dataInicial</span>&nbsp;<span style="color: blue; ">AND</span>&nbsp;<span style="color: #8000FF; ">@dataFinal</span><span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;5.&nbsp;Exercícios:&nbsp;stored&nbsp;procedures&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-</span>
+<br/><span style="color: green; font-style: italic; ">/*5.&nbsp;Faça&nbsp;uma&nbsp;procedure&nbsp;para&nbsp;efetuar&nbsp;um&nbsp;aumento&nbsp;do&nbsp;estoque
+
+<br/>de&nbsp;um&nbsp;produto,&nbsp;caso&nbsp;o&nbsp;produto&nbsp;esteja&nbsp;com&nbsp;o&nbsp;status&nbsp;igual&nbsp;a&nbsp;1
+
+<br/>(ativo).&nbsp;Deve-se&nbsp;receber&nbsp;o&nbsp;código&nbsp;do&nbsp;produto&nbsp;e&nbsp;a
+
+<br/>quantidade&nbsp;a&nbsp;ser&nbsp;aumentada&nbsp;no&nbsp;estoque&nbsp;e,&nbsp;retornar&nbsp;1
+
+<br/>(insucesso)&nbsp;ou&nbsp;0&nbsp;(sucesso).*/</span>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">PROCEDURE</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Aumentar_estoque</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@prd_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@qtd</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">UPDATE</span>&nbsp;<span style="color: maroon; ">produtos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SET</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_qtd</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: maroon; ">prd_qtd</span>&nbsp;<span style="color: silver; ">+</span>&nbsp;<span style="color: #8000FF; ">@qtd</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@prd_codigo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">AND</span>&nbsp;<span style="color: maroon; ">prd_status</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: black; ">1</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">IF</span>&nbsp;<span style="color: maroon; ">(</span>&nbsp;<span style="color: #8000FF; ">@@ROWCOUNT</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: black; ">1</span>&nbsp;<span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">0</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">1</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">1</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*10.&nbsp;Faça&nbsp;uma&nbsp;procedure&nbsp;para&nbsp;alterar&nbsp;o&nbsp;nome,&nbsp;crédito&nbsp;e&nbsp;renda&nbsp;de
+
+<br/>um&nbsp;cliente.&nbsp;Deve-se&nbsp;recebe&nbsp;como&nbsp;entrada&nbsp;o&nbsp;código&nbsp;do
+
+<br/>cliente&nbsp;e&nbsp;os&nbsp;novos&nbsp;valores&nbsp;para&nbsp;nome,&nbsp;crédito&nbsp;e&nbsp;renda.&nbsp;Use
+
+<br/>controle&nbsp;de&nbsp;transação&nbsp;e&nbsp;tratamento&nbsp;de&nbsp;erros&nbsp;(try..catch).*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">PROCEDURE</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Alterar_cliente</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@codCli</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@novoNome</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: maroon; ">max</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@novoCredito</span>&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@novaRenda</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: maroon; ">)</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">UPDATE</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SET</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pes_nome</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@novoNome</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">(</span>&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@codCli</span>&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">UPDATE</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SET</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_credito</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@novoCredito</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_renda</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@novaRenda</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">(</span>&nbsp;<span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@codCli</span>&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">COMMIT</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">0</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ROLLBACK</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">1</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*15.&nbsp;Faça&nbsp;uma&nbsp;procedure&nbsp;para&nbsp;cadastrar&nbsp;um&nbsp;cliente.&nbsp;Elabore&nbsp;de
+
+<br/>duas&nbsp;maneiras:
+
+<br/>a)&nbsp;Utilize&nbsp;controle&nbsp;de&nbsp;transação&nbsp;e&nbsp;de&nbsp;exceção&nbsp;(try..catch);*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">PROCEDURE</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Cad_cli</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@pes_nome</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">50</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@pes_cpf</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">12</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_renda</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_credito</span>&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: maroon; ">)</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@pes_nome</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@pes_cpf</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@@IDENTITY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_renda</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_credito</span><span style="color: maroon; ">)</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">COMMIT</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">0</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ROLLBACK</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">1</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*b)&nbsp;Faça&nbsp;os&nbsp;controle&nbsp;manuais&nbsp;utilizando&nbsp;select&nbsp;e&nbsp;if*/</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">PROCEDURE</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Cad_cli2</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@pes_nome</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">50</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@pes_cpf</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">VARCHAR</span><span style="color: maroon; ">(</span><span style="color: black; ">12</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_renda</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_credito</span>&nbsp;<span style="color: black; font-style: italic; ">MONEY</span><span style="color: maroon; ">)</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">DECLARE</span>&nbsp;<span style="color: #8000FF; ">@pes_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">IF</span>&nbsp;<span style="color: maroon; ">(</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: fuchsia; font-style: italic; ">Count</span><span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">pessoas</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_cpf</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@pes_cpf</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: black; ">0</span>&nbsp;<span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">pessoas</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@pes_nome</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@pes_cpf</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; ">1</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SET</span>&nbsp;<span style="color: #8000FF; ">@pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@@IDENTITY</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">IF</span>&nbsp;<span style="color: maroon; ">(</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: blue; ">SELECT</span>&nbsp;<span style="color: fuchsia; font-style: italic; ">Count</span><span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">clientes</span><span style="color: silver; ">.</span><span style="color: maroon; ">pes_codigo</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@pes_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: black; ">0</span>&nbsp;<span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">clientes</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">VALUES</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@pes_codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_renda</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #8000FF; ">@cli_credito</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">/*20.&nbsp;Repita&nbsp;a&nbsp;procedure&nbsp;anterior,&nbsp;mas,&nbsp;além&nbsp;de&nbsp;copiar,&nbsp;também
+
+<br/>remove&nbsp;o&nbsp;pedido&nbsp;e&nbsp;seus&nbsp;itens&nbsp;de&nbsp;suas&nbsp;tabelas&nbsp;originais.&nbsp;*/</span>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Pedidos&nbsp;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">copy_pedidos</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_data</span>&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DATETIME</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_valor</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_valor</span>&nbsp;<span style="color: silver; ">&gt;</span>&nbsp;<span style="color: black; ">0</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_status</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">CHECK</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_status</span>&nbsp;<span style="color: blue; ">IN</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: black; ">1</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">3</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">4</span><span style="color: maroon; ">)</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">fun_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">est_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">fun_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">funcionarios</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">cli_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">clientes</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">est_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">estagiarios</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">pes_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: green; font-style: italic; ">&#45;&#45;&nbsp;Tabela&nbsp;Itens_Pedidos&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&nbsp;</span>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">TABLE</span>&nbsp;<span style="color: maroon; ">copy_itens</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">(</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_qtd</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black; font-style: italic; ">INT</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_valor</span>&nbsp;&nbsp;<span style="color: black; font-style: italic; ">DECIMAL</span><span style="color: maroon; ">(</span><span style="color: black; ">7</span><span style="color: silver; ">,</span>&nbsp;<span style="color: black; ">2</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">NOT</span>&nbsp;<span style="color: blue; ">NULL</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">PRIMARY</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: silver; ">,</span>&nbsp;<span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">pedidos</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">ped_numero</span><span style="color: maroon; ">)</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FOREIGN</span>&nbsp;<span style="color: blue; ">KEY</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span>&nbsp;<span style="color: blue; ">REFERENCES</span>&nbsp;<span style="color: maroon; ">produtos</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: maroon; ">prd_codigo</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;<span style="color: maroon; ">)</span>
+<br/>
+<br/><span style="color: maroon; ">go</span>
+<br/>
+<br/><span style="color: blue; ">CREATE</span>&nbsp;<span style="color: blue; ">PROCEDURE</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Copy_pedido</span>&nbsp;<span style="color: maroon; ">(</span><span style="color: #8000FF; ">@ped_numero</span>&nbsp;<span style="color: black; font-style: italic; ">INT</span><span style="color: maroon; ">)</span>
+<br/><span style="color: blue; ">AS</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">copy_pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">ped_numero</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_data</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_valor</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">ped_status</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">fun_codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">cli_codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">est_codigo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@ped_numero</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">INSERT</span>&nbsp;<span style="color: blue; ">INTO</span>&nbsp;<span style="color: maroon; ">copy_itens</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">SELECT</span>&nbsp;<span style="color: maroon; ">ped_numero</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">prd_codigo</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_qtd</span><span style="color: silver; ">,</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">itp_valor</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">FROM</span>&nbsp;&nbsp;&nbsp;<span style="color: maroon; ">copy_itens</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@ped_numero</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">DELETE</span>&nbsp;<span style="color: maroon; ">itens_pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@ped_numero</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">DELETE</span>&nbsp;<span style="color: maroon; ">pedidos</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">WHERE</span>&nbsp;&nbsp;<span style="color: maroon; ">ped_numero</span>&nbsp;<span style="color: silver; ">=</span>&nbsp;<span style="color: #8000FF; ">@ped_numero</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">COMMIT</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: black; ">0</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">try</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">BEGIN</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">ROLLBACK</span>&nbsp;<span style="color: blue; ">TRAN</span>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">RETURN</span>&nbsp;<span style="color: #FF0080; font-weight: bold; ">Error_number</span><span style="color: maroon; ">(</span><span style="color: maroon; ">)</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;<span style="color: maroon; ">catch</span>
+<br/>&nbsp;&nbsp;<span style="color: blue; ">END</span>&nbsp;
+</span></div>
